@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8f1">
+  <meta name="description" content="Ember Arc — build consistency, complete workouts, earn XP, and follow your fitness roadmap.">
+  <title>Ember Arc — Your training journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="authScreen" class="auth-screen">
+    <div class="auth-card">
+      <div class="brand-mark large"><span class="brand-flame">✦</span></div>
+      <p class="eyebrow">YOUR TRAINING JOURNEY</p>
+      <h1>Welcome to <span>Ember Arc</span></h1>
+      <p class="muted auth-intro">Build consistency. Collect XP. Level up one workout at a time.</p>
+      <div class="auth-tabs"><button class="auth-tab active" data-auth-mode="signup">Create account</button><button class="auth-tab" data-auth-mode="login">Log in</button></div>
+      <form id="authForm">
+        <label id="nameField">Display name<input id="authName" autocomplete="nickname" maxlength="24" placeholder="What should we call you?"></label>
+        <label>Email<input id="authEmail" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+        <label>Password<input id="authPassword" type="password" autocomplete="new-password" minlength="6" required placeholder="At least 6 characters"></label>
+        <button class="btn primary wide" type="submit" id="authSubmit">Create my account <span>→</span></button>
+        <p class="form-message" id="authMessage" role="status"></p>
+      </form>
+      <p class="fine-print">Your account and progress are synced with Firebase when the project is configured.</p>
+    </div>
+  </div>
+
+  <div id="app" class="app-shell hidden">
+    <aside class="sidebar">
+      <a class="brand" href="#home" aria-label="Ember Arc home"><span class="brand-mark">✦</span><span>ember<span class="brand-light">arc</span></span></a>
+      <div class="side-user" id="sideUser"></div>
+      <p class="nav-label">MENU</p>
+      <nav class="side-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-page="home"><span class="nav-icon">⌂</span> Home</button>
+        <button class="nav-item" data-page="workouts"><span class="nav-icon">▤</span> Workouts</button>
+        <button class="nav-item" data-page="roadmap"><span class="nav-icon">⌁</span> Roadmap</button>
+        <button class="nav-item" data-page="generator"><span class="nav-icon">✧</span> Generator</button>
+        <button class="nav-item" data-page="challenges"><span class="nav-icon">⚑</span> Challenges</button>
+        <button class="nav-item" data-page="progress"><span class="nav-icon">▥</span> Progress</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="mini-quote"><span>✦</span><p>Small steps.<br><strong>Real momentum.</strong></p></div>
+        <button class="nav-item" data-page="profile"><span class="nav-icon">◉</span> My profile</button>
+        <button class="nav-item muted-nav" id="logoutBtn"><span class="nav-icon">↪</span> Sign out</button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div><p class="eyebrow" id="todayLabel">YOUR DAILY RESET</p><h1 id="pageTitle">Good to see you<span class="title-period">.</span></h1></div>
+        <div class="top-actions"><button class="icon-btn" id="quickAddBtn" title="Log a workout" aria-label="Log a workout">＋</button><button class="user-pill" data-page="profile" id="topUser"></button></div>
+      </header>
+
+      <section class="page active" id="page-home">
+        <div class="hero-grid">
+          <article class="hero-card">
+            <div class="hero-copy"><p class="eyebrow orange">TODAY'S FOCUS</p><h2 id="todayFocusTitle">Build your momentum</h2><p id="todayFocusText">A little progress today is still progress. Pick a session and get moving.</p><div class="hero-actions"><button class="btn primary" id="startTodayBtn">Start workout <span>→</span></button><button class="btn soft" data-page="workouts">View workouts <span>☷</span></button></div></div>
+            <div class="mascot-wrap" aria-label="Ember mascot illustration"><svg class="mascot" viewBox="0 0 250 280" role="img" aria-label="Cute orange ember creature mascot"><ellipse cx="127" cy="265" rx="91" ry="11" fill="#e9e8e5"/><path d="M69 75 Q40 46 64 25 Q69 48 88 49 Q86 18 111 8 Q108 37 128 43 Q145 15 164 22 Q151 43 174 56 Q206 37 210 69 Q186 75 182 95" fill="#ee8a22" stroke="#633d21" stroke-width="5" stroke-linejoin="round"/><path d="M78 73 Q58 44 77 34 Q79 56 98 54 Q96 29 115 22 Q113 50 133 54 Q147 29 161 34 Q150 54 174 65" fill="#ffb12f"/><path d="M76 74 Q42 90 47 122 L55 167 Q61 192 88 203 L163 203 Q190 190 195 161 L199 115 Q193 85 170 75Z" fill="#f68a22" stroke="#5a3925" stroke-width="5"/><path d="M70 109 Q80 91 105 96 Q114 105 106 129 Q92 143 78 130Z M139 98 Q164 90 176 110 Q178 132 160 137 Q139 132 139 111Z" fill="#fff8e9"/><circle cx="94" cy="116" r="10" fill="#ffbb28"/><circle cx="158" cy="116" r="10" fill="#ffbb28"/><path d="M104 157 Q126 174 148 156" fill="none" stroke="#5b3826" stroke-width="5" stroke-linecap="round"/><path d="M94 203 L82 242 Q82 253 97 253 L119 253 L126 205 M157 203 L170 242 Q173 253 158 253 L137 253 L129 205" fill="#6f4328" stroke="#53331f" stroke-width="5" stroke-linejoin="round"/><path d="M78 241 Q58 242 54 255 Q52 265 70 267 L117 267 Q126 258 118 251 L97 242Z M161 242 Q181 242 192 255 Q196 266 178 267 L137 267 Q126 259 136 251Z" fill="#fff1dc" stroke="#53331f" stroke-width="5"/><path d="M63 147 Q35 156 33 178 Q34 193 56 190 L89 171 M183 146 Q211 154 215 176 Q213 194 192 188 L164 170" fill="none" stroke="#633d21" stroke-width="14" stroke-linecap="round"/><path d="M91 167 Q111 144 130 160 Q148 143 166 166 Q157 190 129 189 Q99 190 91 167" fill="#ffae32" stroke="#633d21" stroke-width="4"/><path d="M118 47 Q119 19 135 15 Q141 37 132 51" fill="#6b492a" stroke="#51351f" stroke-width="4"/><path d="M151 57 Q165 37 180 45 Q175 60 157 65" fill="#6b9c42" stroke="#45682f" stroke-width="3"/></svg><span class="mascot-spark spark-one">✦</span><span class="mascot-spark spark-two">✧</span></div>
+          </article>
+          <div class="stats-stack">
+            <article class="stat-card streak-stat"><div class="stat-icon fire">♨</div><div><span class="stat-label">DAY STREAK</span><strong id="streakValue">0</strong><small>Keep showing up</small></div></article>
+            <article class="stat-card"><div class="stat-icon xp-icon">★</div><div><span class="stat-label">TOTAL XP</span><strong id="xpValue">0</strong><small id="levelValue">Level 1</small></div></article>
+            <article class="rank-card"><div class="rank-badge rank-seedling" id="homeRankBadge">✦</div><div><span class="stat-label">CURRENT RANK</span><strong id="rankValue">Seedling</strong><small id="rankNext">Your journey starts here</small></div><span class="rank-arrow">↗</span></article>
+          </div>
+        </div>
+
+        <div class="section-heading"><div><p class="eyebrow">YOUR JOURNEY</p><h2>Weekly progress</h2></div><button class="text-button" data-page="progress">See details →</button></div>
+        <article class="weekly-card"><div class="weekly-summary"><div class="ring" id="weekRing"><div><strong id="weekCount">0/3</strong><span>sessions</span></div></div><div><strong id="weekSummary">Your week is waiting.</strong><p id="weekSub">Complete a workout to start your weekly progress.</p></div></div><div class="week-days" id="weekDays"></div></article>
+
+        <div class="section-heading"><div><p class="eyebrow">PICK UP THE PACE</p><h2>Daily challenges</h2></div><button class="text-button" data-page="challenges">View all →</button></div>
+        <div class="challenge-preview-grid" id="homeChallenges"></div>
+
+        <div class="section-heading"><div><p class="eyebrow">QUICK START</p><h2>Choose your session</h2></div><button class="text-button" data-page="workouts">Workout library →</button></div>
+        <div class="quick-workouts" id="quickWorkouts"></div>
+      </section>
+
+      <section class="page" id="page-workouts">
+        <div class="page-intro"><div><p class="eyebrow orange">TRAIN WITH PURPOSE</p><h2>Workout library</h2><p>Pick a session, complete the exercises, and collect your XP.</p></div><button class="btn primary" data-page="generator">＋ Build a workout</button></div>
+        <div class="filter-row" id="workoutFilters"><button class="filter-chip active" data-filter="All">All</button><button class="filter-chip" data-filter="Upper body">Upper body</button><button class="filter-chip" data-filter="Lower body">Lower body</button><button class="filter-chip" data-filter="Full body">Full body</button><button class="filter-chip" data-filter="Core">Core</button></div>
+        <div class="workout-grid" id="workoutGrid"></div>
+      </section>
+
+      <section class="page" id="page-roadmap">
+        <div class="page-intro"><div><p class="eyebrow orange">EVERY REP COUNTS</p><h2>Your rank roadmap</h2><p>Earn XP through completed workouts and challenges to unlock the next badge.</p></div><div class="current-rank-mini" id="roadmapCurrent"></div></div>
+        <article class="roadmap-banner"><div><p class="eyebrow">NEXT MILESTONE</p><h3 id="nextRankTitle">Sprout</h3><p id="nextRankCopy">Keep stacking sessions to reach your next rank.</p><div class="progress-track"><span id="rankProgressBar"></span></div><small id="rankProgressText">0 / 100 XP</small></div><div class="big-rank-badge" id="nextRankBadge">🌱</div></article>
+        <div class="roadmap-list" id="roadmapList"></div>
+      </section>
+
+      <section class="page" id="page-generator">
+        <div class="page-intro"><div><p class="eyebrow orange">MADE FOR YOUR DAY</p><h2>Workout generator</h2><p>Build a session around your time, focus, and equipment.</p></div></div>
+        <div class="generator-layout"><form class="panel generator-form" id="generatorForm"><h3>Set your preferences</h3><label>Training focus<select id="genFocus"><option>Upper body</option><option>Lower body</option><option>Full body</option><option>Core</option></select></label><label>Time available<select id="genTime"><option value="20">20 minutes</option><option value="30" selected>30 minutes</option><option value="45">45 minutes</option><option value="60">60 minutes</option></select></label><label>Equipment<select id="genEquipment"><option value="bodyweight">Bodyweight only</option><option value="home">Backpack + light weight</option><option value="mixed">Bodyweight + backpack</option></select></label><label>Experience<select id="genLevel"><option value="steady">Getting back into it</option><option value="regular">Regular training</option><option value="new">New to training</option></select></label><button class="btn primary wide" type="submit">Generate my workout <span>✧</span></button></form><div class="panel generated-panel" id="generatedPanel"><div class="empty-generator"><div class="empty-spark">✧</div><h3>Your next session starts here</h3><p>Choose your preferences and generate a balanced workout. You can save it or start right away.</p></div></div></div>
+      </section>
+
+      <section class="page" id="page-challenges">
+        <div class="page-intro"><div><p class="eyebrow orange">LITTLE WINS ADD UP</p><h2>Challenges</h2><p>Set a target, track your effort, and earn bonus XP when you finish.</p></div></div>
+        <div class="challenge-layout"><div><div class="section-heading compact"><div><h3>Active challenges</h3><p class="muted">Your current goals</p></div><button class="btn soft small" id="resetChallengesBtn">Reset defaults</button></div><div class="challenge-list" id="challengeList"></div></div><form class="panel custom-challenge-form" id="customChallengeForm"><div class="form-icon">⚑</div><h3>Create a challenge</h3><p class="muted">Make a small goal you can track over time.</p><label>Challenge name<input id="challengeName" maxlength="42" required placeholder="e.g. Morning movement"></label><label>Target number<input id="challengeTarget" type="number" min="1" max="10000" required value="20"></label><label>Unit<select id="challengeUnit"><option value="reps">reps</option><option value="minutes">minutes</option><option value="sessions">sessions</option><option value="days">days</option></select></label><button class="btn primary wide" type="submit">＋ Add challenge</button></form></div>
+      </section>
+
+      <section class="page" id="page-progress">
+        <div class="page-intro"><div><p class="eyebrow orange">LOOK HOW FAR YOU'VE COME</p><h2>Your progress</h2><p>Every completed session is another step on your roadmap.</p></div><button class="btn soft" id="exportBtn">↓ Export data</button></div>
+        <div class="progress-stats" id="progressStats"></div>
+        <div class="progress-layout"><article class="panel activity-panel"><div class="panel-heading"><div><h3>Recent activity</h3><p class="muted">Your latest completed workouts</p></div><span class="heading-icon">▥</span></div><div id="activityList" class="activity-list"></div></article><article class="panel xp-panel"><div class="panel-heading"><div><h3>XP overview</h3><p class="muted">Your level-up journey</p></div></div><div class="xp-big"><strong id="progressXp">0</strong><span>total XP</span></div><div class="progress-track"><span id="xpProgressBar"></span></div><p class="muted" id="xpProgressCaption">Keep going to reach your next level.</p><div class="xp-breakdown"><div><span class="dot orange-dot"></span> Workouts <strong id="workoutXp">0 XP</strong></div><div><span class="dot green-dot"></span> Challenges <strong id="challengeXp">0 XP</strong></div></div></article></div>
+      </section>
+
+      <section class="page" id="page-profile">
+        <div class="page-intro"><div><p class="eyebrow orange">THIS IS YOUR ARC</p><h2>Your profile</h2><p>Your training identity, preferences, and account on this device.</p></div></div>
+        <div class="profile-layout"><article class="panel profile-identity"><div class="profile-avatar" id="profileAvatar">✦</div><h2 id="profileName">Athlete</h2><p class="muted" id="profileEmail">local account</p><div class="profile-rank-row" id="profileRankRow"></div><div class="profile-numbers" id="profileNumbers"></div></article><form class="panel profile-settings" id="profileForm"><h3>Profile settings</h3><label>Display name<input id="profileNameInput" maxlength="24" required></label><label>Main focus<select id="profileGoal"><option>Build strength</option><option>Build consistency</option><option>Improve endurance</option><option>General fitness</option></select></label><button class="btn primary" type="submit">Save changes</button><p class="form-message" id="profileMessage"></p><div class="settings-divider"></div><h3>Account data</h3><p class="muted">Your profile and progress are stored in your Firebase account and sync when you are online.</p><button type="button" class="btn danger-outline" id="deleteAccountBtn">Delete account</button></form></div>
+      </section>
+
+      <footer class="app-footer"><span>✦ EMBER ARC</span><span>Progress, not perfection.</span><span class="footer-local">FIREBASE-READY</span></footer>
+    </main>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation"><button class="active" data-page="home"><span>⌂</span>Home</button><button data-page="workouts"><span>▤</span>Train</button><button data-page="roadmap"><span>⌁</span>Ranks</button><button data-page="challenges"><span>⚑</span>Goals</button><button data-page="profile"><span>◉</span>Profile</button></nav>
+  </div>
+
+  <div class="modal-backdrop hidden" id="sessionModal" role="dialog" aria-modal="true" aria-labelledby="sessionTitle"><div class="modal-card session-card"><button class="modal-close" data-close-modal aria-label="Close">×</button><p class="eyebrow orange">YOUR SESSION</p><h2 id="sessionTitle">Upper body focus</h2><p class="muted" id="sessionSub">Check off exercises as you complete them.</p><div class="session-meta" id="sessionMeta"></div><div id="sessionExercises" class="session-exercises"></div><div class="session-footer"><span id="sessionCount">0 exercises complete</span><button class="btn primary" id="finishWorkoutBtn">Complete workout <span>→</span></button></div><p class="form-message" id="sessionMessage"></p></div></div>
+  <div class="toast" id="toast" role="status"></div>
+  <!-- Firebase compat SDKs keep the app's existing plain-JavaScript structure. -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
