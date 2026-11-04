@@ -120,10 +120,10 @@
 
   <div class="modal-backdrop hidden" id="sessionModal" role="dialog" aria-modal="true" aria-labelledby="sessionTitle"><div class="modal-card session-card"><button class="modal-close" data-close-modal aria-label="Close">×</button><p class="eyebrow orange">YOUR SESSION</p><h2 id="sessionTitle">Upper body focus</h2><p class="muted" id="sessionSub">Check off exercises as you complete them.</p><div class="session-meta" id="sessionMeta"></div><div id="sessionExercises" class="session-exercises"></div><div class="session-footer"><span id="sessionCount">0 exercises complete</span><button class="btn primary" id="finishWorkoutBtn">Complete workout <span>→</span></button></div><p class="form-message" id="sessionMessage"></p></div></div>
   <div class="toast" id="toast" role="status"></div>
-  <!-- Firebase compat SDKs keep the app's existing plain-JavaScript structure. -->
+    <!-- Firebase compat SDKs: load before firebase-config.js and script.js. -->
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
   <script src="firebase-config.js"></script>
   <script src="script.js"></script>
 </body>
